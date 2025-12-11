@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+html {
+    font-family: sans-serif
+}
+body {
+    max-width: 768px;
+    background-color: #333;
+    color: white;   
+    text-shadow: 1px 1px 2px silver;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+main{
+    background-color: black;
+    padding: 1rem;
+}
+
+p {
+    font-family: "roboto", sans-serif;
+    text-align: justify;
+} 
+mark, .mark{
+    background-color: lime;
+}
+cite {
+    font-weight: bold;
+}
+h1 {
+    padding: .75rem;
+    text-align: center;
+    background-color: red;
+    text-shadow: 1px 1px 1px black;
+}
+.text-center {
+    text-align: center;
+}
+.text-right {
+    text-align: right;
+}
+
+a {
+    color: red;
+    text-shadow: none;
+}
+a:hover {
+    color: yellow;
+}
+h2 {
+    padding: .5rem;
+    background-color: yellow;
+    color: black;
+}
+.floatleft { 
+    float: left;
+    margin-right: 1rem; 
+    margin-left: 0;
+    margin-top: 0;
+}
+.floatright { 
+    float: right;
+    margin: 0 0 auto 1rem;
+}
+figure {
+    border: 1px white solid;
+    padding: 1rem;
+    background-color: gray;
+}
+figcaption {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+figure img {
+filter: sepia(25%);
+}
+figure div{
+    border: .5rem inset #666;
+}

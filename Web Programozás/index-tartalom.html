@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tartalom</title>
+    <link rel="stylesheet" href="style.css">
+    <base target="Tartalom">
+</head>
+<body>
+    <header>
+        <h1>Tartalom</h1>
+    </header>
+    <div id="wrapper" class="clearfix">
+        <nav id="menu">
+        <!-- HTML KOMMENT: # nav elem a navigáció számára fenntartott szemantikus elem -->
+            <ul>
+                <li class="menu"><a href="./lorem-ipsum.html">Lorem Ipsum</a></li>
+                <li class="almenus"><a href="./Vasuttortenet/index.html">Vasúttörténet</a>
+                <ul class="almenu">
+                    <li><a href="Vasuttortenet/index.html#elso_lepesek">Az első lépések</a></li>
+                    <li><a href="Vasuttortenet/index.html#kossuth_szechenyi">Kossuth és Széchenyi a közlekedésért</a></li>
+                    <li><a href="Vasuttortenet/index.html#gozmozdony">A gőzmozdony nagy korszaka</a></li>
+                </ul>
+                </li>
+                <li><a href="./semantic/index.html">szemantikus & nem szemantikus html</a></li>
+                <li><a href="./box_model.html">Box-model</a></li>
+                <li class="almenus">Táblázatok
+                    <ul class="almenu">
+                        <li><a href="./tablazatok/orarend.html">órarend</a></li>
+                        <li><a href="./tablazatok/sakk.html">sakktábla</a></li>
+                    </ul>
+                </li>
+                <li><a href="./backgrounds/index.html">Hátterek</a></li>
+                <li><a href="./backgrounds/tizedes.html">Tizedes</a></li>
+            </ul>
+        </nav>
+        <iframe src="./lorem-ipsum.html" name="Tartalom" style="background-color: white;"></iframe>
+    </div>
+    <footer>
+        <p>&copy; Zsombor</p>
+    </footer>
+</body>
+</html>

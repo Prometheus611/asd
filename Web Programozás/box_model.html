@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box model, box sizing</title>
+    <style>
+        * { /* box-sizing: border-box; */ }
+        html { font-size: 16px; /* a root elem mértkének beállítása */}
+        div { 
+            width: 360px;
+            padding: 1rem; /* a html root elemhez képesti mérték */
+            border: 8px gray inset; border-radius: 8px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Box model</h1>
+    <h2>Box sizing</h2>
+    <div>
+        <h3>Content box</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci asperiores aliquam consequuntur voluptas dolores consectetur eius. Quibusdam non corrupti vel. Earum veritatis, est hic quo corrupti atque ipsam omnis? Dolor!</p>
+        <p> width (of content) + padding + border = width of box</p>
+    </div>
+    <div style="box-sizing: border-box;">
+        <h3>Border box</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci asperiores aliquam consequuntur voluptas dolores consectetur eius. Quibusdam non corrupti vel. Earum veritatis, est hic quo corrupti atque ipsam omnis? Dolor!</p>
+        <p> content = width (of box) - border - padding</p>
+        <p> Az oldal összes blokk elemére: <br>
+            <code>* { box-sizing: border-box }</code></p>
+    </div>
+</body>
+</html>

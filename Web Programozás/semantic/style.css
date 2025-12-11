@@ -1,0 +1,26 @@
+#wrapper{
+    max-width: 768px;
+    background-color: lightskyblue;
+    margin: auto;
+}
+
+body{
+    background-color: lightgreen;
+}
+
+#wrapper>div,
+header,nav,main,footer{
+    border: 1px solid black;
+    padding: 0,5rem;
+
+}
+
+#footer,footer{
+    text-align: center
+}
+
+#footer img,footer img{
+    vertical-align: middle;
+}
+
+a img { border: none;}
