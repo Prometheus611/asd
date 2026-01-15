@@ -46,6 +46,23 @@ body {
     width: 100%;
     margin: 0;
 }
+#foszereplo{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 10px 5px;
+}
+#foszereplo>*{
+    background-color: #333;
+    padding: 4px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px silver,-2px 2px 5px silver,2px -2px 5px silver,-2px -2px 5px silver;
+    max-width: fit-content;
+    margin: 4px;
+}
+#foszereplo figure img{
+    width: 200px;
+}
 #reszlet{
     aspect-ratio: 16 / 9;
     max-width: 560px;
