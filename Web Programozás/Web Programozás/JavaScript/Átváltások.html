@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Átváltások</title>
+    <style>
+        fieldset{
+            border: 1px solid black;
+            border-radius: 3px;
+            width: fit-content;
+        }
+        input[type=text]{color: black;}
+        input{text-align: center; padding: 2px;}
+        input::placeholder{color: red;}
+    </style>
+</head>
+<body>
+    <h1>Átváltások</h1>
+    <fieldset><legend><h2>Decimálisról</h2></legend>
+        <input type="number" min="0" step="1" placeholder="adj meg egy számot" onchange="change()" id="decimal">&nbsp;=
+        <!--<span id="binary"></span>-->
+        <input type="text" size="10" disabled id="binary">&nbsp;=
+        <input type="text" disabled size="6" id="hexdec">
+    </fieldset>
+    <script>
+        const decIn = (document.getElementById("decimal"))
+        console.dir(decIn)
+        function change(){
+            document.getElementById("binary").value = Number(decIn.value).toString(2)+" b"
+            document.getElementById("hexdec").value = Number(decIn.value).toString(16).toUpperCase()+" h"
+        }
+    </script>
+</body>
+</html>
