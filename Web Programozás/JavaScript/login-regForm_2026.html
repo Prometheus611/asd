@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <title>Login / reg. Form</title>
+    <style>
+        fieldset { border-radius: 5px; }
+        input { margin-bottom: 1rem; }
+        ::placeholder { color:red; text-align: center; }
+        #eyeIcon { vertical-align: middle; cursor: pointer; margin-left: -2rem;}
+    </style>
+</head>
+<body>
+    <form action="#" name="myForm" id="myForm">
+        <fieldset><legend><h1>Belépés/Regisztráció</h1></legend>
+            Név: <input type="text" name="name" id="IDname" placeholder="Neved"><br>
+            E-mail: <input type="email" name="eMail" id="IDeMail" placeholder="Kötelező a kitöltése!" required><br>
+            Jelszó: <input type="password" name="password" id="IDpassword" placeholder="Kötelező a kitöltése!" required>
+            <span class="material-symbols-outlined" id="eyeIcon">visibility_off</span><br>
+
+            <label><input type="checkbox" name="elfogad" id="IDelfogad"> Elfogadom a... </label><br>
+            
+            <button type="submit" name="login">Belépés</button>
+            <button type="submit" name="reg">Regisztráció</button>
+            <button type="reset">Űrlap törlése</button>
+        </fieldset>
+    </form>
+
+
+    <script>
+
+        const myForm = document.myForm
+
+        // teszteléshez kötelező mezők inicializálása
+                myForm.eMail.value = "Valaki@mail.hu"
+                myForm.password.value = "x"
+                myForm.elfogad.checked=true
+
+        // jelszó megjelenítés
+
+            document.getElementById("eyeIcon").onmouseover = () => { 
+                myForm.password.type = "text" 
+                document.getElementById("eyeIcon").innerText = "visibility"
+            }
+            document.getElementById("eyeIcon").onmouseout= () => { 
+                myForm.password.type = "password" 
+                document.getElementById("eyeIcon").innerText = "visibility_off"
+            }
+
+        // űrlap feldolgozás submit
+            myForm.onsubmit = (eventObj) => {
+                    eventObj.preventDefault()
+                    console.clear()
+                    console.log(eventObj)
+
+                    if (eventObj.submitter.name=="login") {login()} 
+                    else {
+                        registration()
+                    }
+            }
+            function login() {
+                alert(`Üdv ${myForm.name.value}!`) 
+                myForm.reset()
+            }
+            function registration(){
+                if (myForm.elfogad.checked) {
+                        const confirmPSW = prompt("Jelszó megerősítés")
+                        if (confirmPSW==myForm.password.value) {
+                            alert("sikeres regisztráció")
+                        } else {
+                            alert("a jelszavak nem egyeznek meg")
+                            myForm.password.select()
+                        }
+                    } else {
+                        alert("Fogadja el a...")
+                    }
+            }
+
+    </script>
+
+</body>
+</html>
