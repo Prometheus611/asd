@@ -1,0 +1,10 @@
+1.a) Irasd ki lekérdezés segítségével, hogy melyik miniszterelnök mennyi ideig volt a ebben a pozícióban?
+Név és ido jelenjen meg az oszlopokban! (INNER JOIN)
+1.b) Készítsük el az elõzõ lekérdezést  LEFT JOIN segítségével.
+1.c) Készítsük el az elõzõ lekérdezést  RIGHT JOIN segítségével. 
+
+2.) B betûvel kezdõdõ miniszter elnökök nevei?
+3.) Jelenítsd meg a B-vel kezdõdõ miniszterlnökök számát az oszlop neve legyen "B-sek száma"!
+4.) Írsd ki hány évesen halt meg Bethlen István!
+5.) Kik azok a miniszterelnökök, akik tovább éltek mint Betlehen István?
+6.) Hány ember felelt meg az elõzõ feltételnek?

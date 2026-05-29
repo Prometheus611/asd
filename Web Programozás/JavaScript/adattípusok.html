@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS adattípusok</title>
+    <base target="w3schools">
+</head>
+<body>
+    <h1>Adattípusok</h1>
+    <p>Nyisd meg a konzolt!</p>
+    <ul>
+        <li>Egyszerű adattípusok
+            <ul>
+                <li>number</li>
+                <li>string</li>
+                <li>boolean - logikai</li>
+                <li>undefined</li>
+                <li>null - ismeretlen</li>
+            </ul>
+        </li>
+        <li>Összetett adattípusok ( -> Object)
+            <ul>
+                <li>tömb</li>
+                <li>objektum (kulcs-érték párok)</li>
+            </ul>
+        </li>
+    </ul>
+    <p align="right">
+        <a href="https://www.w3schools.com/js/js_datatypes.asp">JavaScript adattípusok</a><br>
+        <a href="https://www.w3schools.com/js/js_typeof.asp">JavaScript typeof operator</a><br>
+        <a href="https://www.w3schools.com/js/js_type_conversion.asp">JavaScript típuskonverzió</a>
+    </p>
+    <script>
+    // Adattípusok
+        // number
+            console.log("Numbers: ", 1, 2, 1,41, 3.14, Math.PI)
+                console.log(1,typeof 1)
+                console.log(3.14,typeof 3.14)
+                console.log("Number(\"3.14\") :",Number("3.14"),typeof Number("3.14"))
+                console.log("\"NaN\"", typeof NaN)
+        // string
+            console.log("Strings:\n","abc","hello \"world\"","617","null","true")
+                console.log("abc",typeof "abc")
+                console.log("hello \"world\"",typeof "hello \"world\"")
+                console.log("617",typeof "617")
+        // boolean - logikai
+            console.log("boolean: ",true," | ",false)
+                console.log(true,typeof true)
+                console.log(false,typeof false)
+        // undefined
+            let a
+            console.log("let a",a,typeof a)
+        // null - ismeretlen
+            a = null
+            console.log("a = null",a,typeof a)
+            console.log("null == \"\" ",null == "")
+            console.log("null == 0 ",null == 0)
+                console.log(" 1 == true ", 1 == true)
+                console.log(" 1 === true ", 1 === true)
+            
+    // tömb, objektum
+            t=[1,Math.sqrt(2),3,1415,"9.81",[true,false],null]
+            console.log("tömb:\n",t,"\n",typeof t)
+            for (let index = 0; index < t.length; index++) {
+                const element = t[index];
+                console.log(index+".",element,typeof element);
+            }
+        // objektum (kulcs-érték párok)
+        const xyobject = {
+                first_name: "Iksz",
+                last_name: "Ypszilon",
+                age: 8,
+                married: null,
+                have_car: true
+            }
+        console.log("xy object",xyobject, typeof xyobject)
+
+            console.log("név",xyobject.first_name,typeof xyobject.first_name)
+            console.log("kor",xyobject.age,typeof xyobject.age)
+            console.log("házas",xyobject.married,typeof xyobject.married)
+            console.log("van verda",xyobject.have_car,typeof xyobject.have_car)
+    </script>
+</body>
+</html>

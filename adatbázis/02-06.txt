@@ -1,0 +1,2 @@
+select * from felhasznalok where regisztralas = '2012-03-03' order by email
+select * from felhasznalok where nev like '%Barna'

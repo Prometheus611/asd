@@ -1,0 +1,35 @@
+1. feladat
+create database országok
+Feladatok
+1:
+select fovaros from orszagok where orszag like "Madagaszkár"
+2:
+select orszag from orszagok where autojel like "TT"
+3:
+select nepesseg from orszagok where orszag like "Malta"
+4:
+select sum(nepesseg) from orszagok 
+5:
+select avg(terulet) from orszagok 
+6:
+select count(orszag) from orszagok 
+where terulet>1000000
+7:
+select count(orszag) from orszagok 
+where nepesseg>8000 and nepesseg<12000
+8:
+select count(orszag) from orszagok 
+where foldr_hely like "%Afrika%"
+9:
+select orszag from orszagok 
+where foldr_hely like "%szigetország%"
+10:
+select count(orszag) from orszagok 
+where penznem like "kelet-karib dollár"
+11:
+select (select sum(nepesseg) from orszagok where foldr_hely like "%Európa%") as "Európa népessége",
+(select sum(nepesseg) from orszagok where foldr_hely like "%Afrika%") as "Afrika népessége",
+(select sum(nepesseg) from orszagok where foldr_hely like "%Ázsia%") as "Ázsia népessége",
+(select sum(nepesseg) from orszagok where foldr_hely like "%Észak-Amerika%" or "%Közép-Amerika%") as "Észak-Amerika népessége",
+(select sum(nepesseg) from orszagok where foldr_hely like "%Dél-Amerika%") as "Dél-Amerika népessége",
+(select sum(nepesseg) from orszagok where foldr_hely like "%Óceánia%" or "%Ausztrália%") as "Óceánia és Ausztrália népessége"

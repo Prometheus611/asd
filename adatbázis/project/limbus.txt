@@ -1,0 +1,6 @@
+Sinners		id/no	nÄmen	Source	Bday	Height	Sin_id	Subtitle
+E.G.O		id	sinner_id	abno	status
+Abno		id	classificatin	ego_id	Sin_id
+Identities	id	sinner_id	mirror_world
+Sins		id	nÄmen	status
+Risk		id	Level	Explanation

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Űrlap - regisztráció, jelszóerősség</title>
+</head>
+
+<body>
+    <h1>Űrlap - regisztráció, jelszóerősség</h1>
+    <form action="#" name="reg">
+        <fieldset>
+            <legend><h2>Regisztáció</h2></legend>
+            <!-- input type="checkbox" name="" id="" readonly disabled tabindex="-1" -->
+            <input type="text" name="name" id="name" placeholder="Neved">
+            <p><input type="email" name="email" id="email" placeholder="e-mail cím"></p>
+            <p><input type="password" name="psw" id="psw" placeholder="jelszó" required></p>
+            <p>Jelszó erősség:<br>
+                Hossz: <input type="checkbox" name="hossz" id="hossz" readonly tabindex="-1"> |
+                kisbetű: <input type="checkbox" name="kisbetu" id="kisbetu" readonly tabindex="-1"> |
+                nagybetű: <input type="checkbox" name="nagybetu" id="nagybetu" readonly tabindex="-1"> |
+                szám: <input type="checkbox" name="szam" id="szam" readonly tabindex="-1">
+            </p>
+            <label for="elfogad"><input type="checkbox" name="elfogad" id="elfogad"> Elfogadom a szabályzatot...</label>
+            <p><button type="submit" name="login">Belépés</button> <button type="submit" name="registration">Regisztáció</button></p>
+        </fieldset>
+    </form>
+
+    <script>
+        const regForm = document.reg
+
+        /* jelszóerősség 
+            - hossz
+            Regular expression https://www.w3schools.com/jsref/jsref_obj_regexp.asp
+            - kisbetű
+            - nagybetű
+            - szám
+            visszajelzés szín, jelölönégyzetek: tiltott | csakolvasható 
+        */
+        let jelszoerosseg = 0
+        // regForm.oninput = () => {
+            regForm.psw.oninput = () => {
+            let jelszavad ="jelszó: "
+            if (regForm.psw.value.length > 7) { regForm.hossz.checked = true } 
+                    else { regForm.hossz.checked = false; jelszavad += " rövid " }
+            if (/[a-z]/.test(regForm.psw.value)) { regForm.kisbetu.checked = true } 
+                    else { regForm.kisbetu.checked = false; jelszavad += " nincs kisbetu " }
+            if (/[A-Z]/.test(regForm.psw.value)) { regForm.nagybetu.checked = true } 
+                    else { regForm.nagybetu.checked = false; jelszavad += " nincs nagybetu " }
+            if (/[0-9]/.test(regForm.psw.value)) { regForm.szam.checked = true } 
+                    else { regForm.szam.checked = false; jelszavad += " nincs szám " }
+            
+            /* let jelszavad = "jelszó " +
+                ((regForm.hossz.checked = false)? " rövid " : "") +
+                ((regForm.kisbetu.checked = false)? " nincs kisbetu " : "") +
+                ((regForm.nagybetu.checked = false)? " nincs nagybetu " : "") +
+                ((regForm.szam.checked = false)? " nincs szám " : "")
+            */
+            console.log(jelszavad)
+
+            jelszoerosseg = (
+                regForm.hossz.checked +
+                regForm.kisbetu.checked +
+                regForm.nagybetu.checked +
+                regForm.szam.checked
+            )
+            console.log("jelszóerősség (1-4): ", jelszoerosseg)
+        }
+
+        regForm.onsubmit = (event) => {
+            event.preventDefault()
+                console.dir(event.submitter.name)
+                    console.log ((event.submitter.name == "login")? "Belépés" : "Regisztráció" )
+                    
+                console.log(event.target.psw.value)
+
+            if (!regForm.elfogad.checked) {
+                alert("Fogadja el a ..")
+                regForm.elfogad.select()
+            }
+            else {
+                if (jelszoerosseg > 0) {
+                    confirmPsw = prompt("Jelszó megerősítése")
+                    if (regForm.psw.value != confirmPsw) {
+                        alert("Nem egyeznek az jelszavak!")
+                        //regForm.psw.focus()
+                        regForm.psw.select()
+                    }
+                    else { 
+                        alert("Jelszó megerősítve, a regisztáció sikeres!")
+                        regForm.reset()
+                        regForm.style.display="none"
+                        document.body.innerHTML = "<h1>A regisztráció sikerült!</h1>"
+                    }
+                }
+                else {
+                    alert("A jelszó nem elég erős!")
+                    //regForm.psw.focus()
+                    regForm.psw.select()
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

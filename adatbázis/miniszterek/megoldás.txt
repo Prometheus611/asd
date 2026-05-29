@@ -1,0 +1,37 @@
+1_1
+select nev,szul from szemely 
+where  szul < 1900;
+1_2
+select nev,szul from szemely 
+where  szul <= 1900;
+2
+select nev,hely from szemely 
+where  nev like "B%";
+3
+select nev,hely,szul from szemely
+where szul<1980 and szul>1950;
+4
+select nev,hely,szul from szemely
+where nev like "%a";
+5
+select nev,hely,szul from szemely
+where nev like "%a" and nev like "K%";
+6
+select nev,hely,szul from szemely
+where nev like "%ll%";
+7
+select nev,hely,szul from szemely
+where nev like "%y%" and szul < 1900 or nev like "%y" and szul < 1900;
+8
+select nev,hely,szul from szemely
+where nev like "%y%" and szul < 1900 or nev like "%y" and szul < 1900
+order by szul asc;
+9
+select nev,hely,szul from szemely
+where nev like "%y%" and szul < 1900 or nev like "%y" and szul < 1900
+order by szul desc;
+10
+select nev,hely,szul from szemely
+where nev like "%y%" and szul < 1900 or nev like "%y" and szul < 1900
+order by szul desc , nev asc;
+11

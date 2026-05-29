@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            /* background-color: hsl(0, 50%, 50%); */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            min-height: 100vh;
+        }
+        input[type="range"]{width: 90%; position: absolute; right: 0;}
+        h2{background-color: black; color: white;}
+    </style>
+</head>
+<body>
+    <h1>Színkeverések</h1>
+    <div id="RGB">
+        <h2>RGB Színkeverés</h2>
+        R: <input type="range" name="" min="0" max="255" id="R"><input type="number" id="NumR" min="0" max="255"><br>
+        G: <input type="range" name="" min="0" max="255" id="G"><input type="number" id="NumG" min="0" max="255"><br>
+        B: <input type="range" name="" min="0" max="255" id="B"><input type="number" id="NumB" min="0" max="255">
+    </div>
+    <input type="text" id="hexa" disabled>
+    <div id="HSL">
+        <h2>HSL Színkeverés</h2>
+        szín: <input type="range" id="hue" min="0" max="360"><br>
+        telítettség: <input type="range" id="saturation" min="0" max="100"><br>
+        világosság: <input type="range" id="light" min="0" max="100">
+    </div>
+<script>
+    const Red = document.getElementById("R")
+    const Green = document.getElementById("G")
+    const Blue = document.getElementById("B")
+
+    const RN = document.getElementById("NumR")
+    const GN = document.getElementById("NumG")
+    const BN = document.getElementById("NumB")
+
+
+    Red.oninput = () => {
+        RGBcolor()
+        RN.value = Red.value
+    }
+    Green.oninput = () => {
+        RGBcolor()
+        GN.value = Green.value
+    }
+    Blue.oninput = () => {
+        RGBcolor()
+        BN.value = Blue.value
+    }
+
+    RN.oninput=()=>{Nchange()}
+    GN.oninput=()=>{Nchange()}
+    BN.oninput=()=>{Nchange()}
+
+    Nchange = () =>{
+        Red.value = RN.value
+        Green.value = GN.value
+        Blue.value = BN.value
+        RGBcolor()
+    }
+
+    function RGBcolor(){
+        document.getElementById("RGB").style.backgroundColor = `rgb(${Red.value},${Green.value},${Blue.value})`
+        document.getElementById("hexa").value = rgbToHex(Number(Red.value),Number(Green.value),Number(Blue.value))
+    }
+
+    const H = document.getElementById("hue")
+    const S = document.getElementById("saturation")
+    const L = document.getElementById("light")
+
+    H.oninput = () => HSLcolor()
+    S.oninput = () => HSLcolor()
+    L.oninput = () => HSLcolor()
+    function HSLcolor(){
+        document.getElementById("HSL").style.backgroundColor = `hsl(${H.value},${S.value}%,${L.value}%)`
+    }
+
+    function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
+
+    function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+    }
+
+</script>
+<script>
+    let val = 0
+    setInterval( () => {
+        val = val+1
+        if (val>=360) {val=0}
+        document.body.style.background = `linear-gradient(225deg, hsl(${val-45},50%,50%) 0%, hsl(${val},50%,50%) 50%,hsl(${val+45},50%,50%) 100%)`;
+    },20)
+</script>
+</body>
+</html>

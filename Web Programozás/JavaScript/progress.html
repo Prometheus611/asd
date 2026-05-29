@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress bar</title>
+    <style>
+        html {font-family: sans-serif;}
+        body { max-width: 575px; margin: auto; }
+        progress { width: 90%; height: 3rem; }
+        #percent { 
+            font-weight: bold;
+            text-shadow: 1px 1px 2px white;
+            border: 0px; background: transparent; text-align: center;
+            position: relative; top: -2.2rem; left: 0px;
+        }
+        .lightTextColor {
+            color: white;
+            text-shadow: 1px 1px 2px black !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>Progress bar</h1>
+
+    <p style="text-align: center;">
+        Click on the progress bar to start!<br>
+        <progress id="progressbar" min="0" max="100"></progress><br>
+        <input type="text" id="percent" size="1">
+    </p>
+
+    <script>
+        const progressBar = document.getElementById("progressbar")
+
+        let onclickEnabled = true
+
+        progressBar.onclick = () => {
+            
+            if (progressBar.value == undefined) { progressBar.value = 0 }
+            
+            let timeOut = 100
+            let step = 0
+            if (onclickEnabled) {
+                onclickEnabled = false
+
+                let progress = setInterval(() => {
+
+                    timeOut = Math.round(100*Math.random())
+                    // step = Math.round(Math.random()-.1)
+                    step = Math.round(2*(Math.random()-.4))
+                        console.log(timeOut, "ms ", step)
+
+                    if (progressBar.value >= 100) {
+                        clearInterval(progress)
+                        alert("Complete")
+                        window.location.reload()
+                    }
+                    else { 
+                        progressBar.value += step
+                        progressBar.style.accentColor = `hsl(${((progressBar.value/100)*120).toFixed(0)}, 100%, 50%)`
+                        progressBar.title = progressBar.value +"%"
+                        document.getElementById("percent").value = progressBar.value +"%"
+                        if (progressBar.value > 50) {
+                            // document.getElementById("percent").style.color="white"                 
+                            // document.getElementById("percent").style.textShadow="1px 1px 2px black"
+                            document.getElementById("percent").classList.add("lightTextColor")                
+                        }
+                    }
+                }, timeOut);
+            }
+        }  
+    </script>
+    
+</body>
+</html>

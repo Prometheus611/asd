@@ -1,0 +1,31 @@
+select ragnev, nev, szul from uralkodo
+where ragnev like "%"
+order by szul
+
+select uh.nev as ház, u.nev,h.mettol,h.meddig from uralkodo as u
+inner join uralkodohaz as uh on uh.azon = u.uhaz_az
+inner join hivatal as h on u.azon = h.uralkodo_az
+where uh.nev like "Árpád%"
+
+select u.nev,h.mettol,h.koronazas from uralkodo as u
+inner join hivatal as h on u.azon = h.uralkodo_az
+where h.mettol < h.koronazas
+
+select count(u.nev) from uralkodo as u
+inner join hivatal as h on u.azon = h.uralkodo_az
+where h.mettol > 1600 and h. mettol < 1700 or h.meddig > 1600 and h.meddig <1700
+
+select u.nev, (h.meddig - h.mettol) as rezsim from hivatal as h
+inner join uralkodo as u on u.azon = h.uralkodo_az
+order by rezsim desc
+limit 1
+
+select u.nev, (h.mettol - u.szul) as koronazaskor from hivatal as h
+inner join uralkodo as u on u.azon = h.uralkodo_az
+having koronazaskor < 15
+order by koronazaskor asc
+
+select u.nev, sum(h.meddig - h.mettol) as ossz from hivatal as h
+inner join uralkodo as u on u.azon = h.uralkodo_az
+group by u.nev
+having count(*)>1

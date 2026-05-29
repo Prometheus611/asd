@@ -1,0 +1,23 @@
+3
+select * from varos where vnev like "%vásár%";
+4
+select vnev,nepesseg,terulet from varos where terulet > 400
+order by terulet desc;
+5
+select vnev,nepesseg from varos
+inner join megye on varos.megyeid=megye.id
+where mnev = "fejér" and nepesseg>15000
+6
+select varostipus.vtip as "Város Típús", (select count(varos.id)) as "Városok Száma", sum(varos.nepesseg) as "Népesség" 
+from varos
+inner join varostipus on varostipus.id=varos.vtipid
+where varostipus.vtip != "főváros"
+group by varostipus.vtip
+7
+select mnev, count(varos.id) as "db" 
+from varos, megye
+where megye.id=megyeid
+and jaras not like kisterseg
+group by mnev
+having db>8
+order by db desc

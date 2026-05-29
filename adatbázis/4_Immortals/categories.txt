@@ -1,0 +1,6 @@
+﻿id	cname
+1	Actress
+2	Actor
+3	Opera singer
+4	Dancer
+5	Musical actor

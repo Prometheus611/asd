@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="Schlauszky"><meta name="Copyright" content="Schlauszky">
+    <title>Űrlapok, űrlap elemek..</title>
+    <style>
+        fieldset { border-radius: 5px; }
+        ::placeholder { color: blue }
+        .required::placeholder {  color: red; padding-left: .2rem; }
+    </style>
+</head>
+<body>
+
+<h1>Űrlapok, attribútumok; űrlap elemek; input típusok ...</h1>
+<p style="text-align: right;"><a href="https://www.w3schools.com/html/html_forms.asp" target="w3scools">W3schools - HTML Forms</a></p>
+
+<form name="loginForm" action="#">
+    <fieldset>
+        <legend><h2>"Belépés"</h2></legend>
+        <p>Felhasználói név*: <input type="text" name="nev" id="nev" maxlength="15" title="kötelező, max.15 karakter" required class="required" placeholder="név, kötelező "></p>
+        <p>eMail-cím*: <input type="email" name="email" id="email" class="required"></p>
+        <p><label for="jelszo">Jelszó*: </label><input type="password" name="jelszo" id="jelszo" minlength="8" title="min. 8karakter">
+            <button onmouseover="mutasd()" onmouseout="elrejt()">Mutat</button><input type="text" name="mutat" id="mutat" disabled>
+            <script>
+                function mutasd() {
+                    document.getElementById('mutat').value = document.getElementById('jelszo').value;
+                }
+                function elrejt() {
+                    document.loginForm.mutat.value = '';
+                }
+            
+            </script>    
+        </p>
+        <input type="submit" value="Küld" id="submit"> <input type="reset" value="Töröl">
+
+        <script>
+           
+            document.getElementById('jelszo').classList.add("required")
+
+            document.getElementById('submit').onmouseover = () => {
+                if (document.getElementById('nev').value=='') {
+                    document.getElementById('nev').focus()
+                }
+
+                if (document.getElementById('jelszo').value=='') {
+                    document.getElementById('jelszo').focus()
+                    // document.getElementById('jelszo').select()
+                    document.getElementById('jelszo').placeholder="min. 5 karakter, kisbetű, nagy betű szám"
+                }
+                
+            /*
+                for (const requiredElement of document.loginForm.querySelectorAll('.required')) {
+                    console.log(document.getElementById(requiredElement.id).value)
+                    if (document.getElementById(requiredElement.id).value = '') {
+                        document.getElementById(requiredElement.id).focus()
+                        document.getElementById(requiredElement.id).placeholder= 'nincs kitöltve'
+                    }
+                }
+            */
+            }
+        </script>
+    </fieldset>
+</form>
+
+<form name="selectForm" action="" >    
+    <fieldset><legend><h2>Listák</h2></legend>
+        <select name="alapszinek" id="alapszinek" size="1" style="vertical-align: top;">
+            <optgroup label="RGB">
+                <option value="R">piros</option>
+                <option value="G" selected>zöld</option>
+                <option value="B">kék</option>
+            </optgroup>
+            <optgroup label="CMY">
+                <option value="C">cián</option>
+                <option value="M">magenta</option>
+                <option value="Y">sárga</option>
+            </optgroup>
+        </select>
+        <script>
+            document.selectForm.alapszinek.onchange = () => { console.log('alapszín: ', document.selectForm.alapszinek.value) 
+                switch (document.selectForm.alapszinek.value) {
+                    case 'R': console.log('vörös'); break;
+                    case 'G': console.log('zöld'); break;
+                    case 'B': console.log('kék'); break;
+                    default: console.log('CMY(k) egyik alapszíne')
+               }
+            }
+        </script>
+
+        <select name="szinek" id="szinek" multiple size="5" style="margin: auto 1rem;">
+            <optgroup label="RGB">
+                <option value="R">piros</option>
+                <option value="G" selected>zöld</option>
+                <option value="B">kék</option>
+            </optgroup>
+            <optgroup label="CMY">
+                <option value="C">cián</option>
+                <option value="M" selected>magenta</option>
+                <option value="Y">sárga</option>
+            </optgroup>
+        </select>
+        <button type="submit">OK</button>
+        <script>
+            // lista többszörös választással
+            // document.selectForm.szinek.onchange = () => { console.dir(document.selectForm.szinek) } 
+            document.selectForm.onsubmit = (event) => { event.preventDefault()
+                // console.log(event.target.szinek)
+                console.log ( 'Kiválasztott színek kódjai:')
+                for (const elem of event.target.szinek) {
+                    // console.log (elem)
+                    if (elem.selected) { console.log (elem.value)}
+                }
+            }
+        </script>
+
+        <input type="color" name="szin" id="szin" style="vertical-align: top;">
+        <script>document.selectForm.szin.onchange = () => { console.log('szín kódja: ',document.selectForm.szin.value) } </script>
+        
+    </fieldset>
+</form>
+
+<form name="checkboxANDradiobuttonForm" action="">
+    <fieldset class="flexbox"><legend><h2>Választások, opciók</h2></legend>
+    <style> label { cursor: pointer;} </style>
+    <div style="display: flex;">
+        <div>
+            Opciók: <br>
+            <label for="opcio1">1 - </label><input type="checkbox" name="opcio1" id="opcio1"><br>
+            <label>2 - <input type="checkbox" name="opcio2" id="opcio2" checked></label><br>
+            3 - <input type="checkbox" name="opcio3" id="opcio3">
+        </div>
+        <div style="margin: 0 2rem;">
+            Válassz! <br>
+            <label for="A"> A menü - </label><input type="radio" name="menu" id="A"><br>
+            B menü - <input type="radio" name="menu" id="B" checked value="Bé"><br>
+            C menü - <input type="radio" name="menu" id="C" value="Cé">
+        </div>
+        <button type="submit">OK</button>
+    </div>
+    </fieldset>
+    <script>
+        document.checkboxANDradiobuttonForm.onclick = () => {
+        // document.checkboxANDradiobuttonForm.onsubmit = (event) => { // event.preventDefault() // Submit-ra nem megy ki HTTP kérés, űrlap nem áll laphelyzetbe
+            console.clear()
+            const elemek = document.checkboxANDradiobuttonForm.getElementsByTagName('input')
+            console.log( elemek )
+
+            console.log('name', 'type', 'checked', 'value')
+
+            for (const elem of elemek) {
+                console.log(elem.name, elem.type, elem.checked, elem.value)
+            }
+            console.log('rádiógombok')
+            console.log(document.checkboxANDradiobuttonForm.menu.value)
+        }
+    </script>
+</form>
+
+<form name="otherinputsOfForm" action="">
+    <fieldset><legend><h2>További lehetőségek</h2></legend>
+        <h3>Numerikus mező</h3>
+        <p>Születési év: <input type="number" name="evszam" id="evszam" min="1900" max="" value="1880" step="1"></p>
+        <script>
+            const evszam = document.otherinputsOfForm.evszam
+            evszam.max =  (new Date()).getFullYear()
+           
+            evszam.onchange = () => { 
+                if (evszam.value < evszam.min) { evszam.value = evszam.min; Oops('kisebb mint 1900. Javítottam!') }
+                if (evszam.value > evszam.max) { evszam.value = evszam.max; Oops('még meg sem születtél?') }
+            }
+        </script>
+
+        <p>Irányítószám: <input type="number" min="1100" max="9999" ></p>
+        <script>
+            // bemenet ellenőrzés
+        </script>
+
+        <h3>Szövegmezö</h3>
+        <textarea name="uzenet" id="uzenet" rows="10" cols="30" style="width: 99%;" placeholder="Ide írhat üzenetet!"></textarea>
+
+        <h3>Csatolandó(k) / feltöltendő(k): <br>
+            <input type="file" name="file" id="file"><img width="100" height="100" id="thumb"><br>
+            <input type="file" name="files" id="files" multiple></h3>
+        <script>
+            document.getElementById("file").onchange = () => {
+                console.log(document.getElementById("file").value)
+                console.dir(document.getElementById("file"))
+                console.log(document.getElementById("file").files[0])
+                console.log(URL.createObjectURL(document.getElementById("file").files[0]))
+                document.getElementById("thumb").src = URL.createObjectURL(document.getElementById("file").files[0])
+            }
+        </script>
+
+        <h3>Dátum, idő <input type="date" name="datum" id="datum"> <input type="time" name="ido" id="ido"></h3>
+
+        <h3>Csuszka (és folyamatjelző)</h3>
+        <p><input type="range" name="csuszka" id="csuszka" oninput="csusz()" min="0" max="100" step="1" style="width: 50%;">
+            <input type="text" name="csuszkaertek" id="csuszkaertek" disabled size="4"></p>
+        </p>Folyamatjelző (nem input): <br>
+        <progress id="progbar" max="100" title="nem input" style="width: 50%;"></progress>
+            <input type="text" id="progbarvalue" disabled size="5">
+        <p>
+                        
+        <script>
+            function csusz() {
+                document.getElementById('csuszkaertek').value = document.getElementById('csuszka').value;
+                document.getElementById('progbar').value = document.urlap.csuszka.value;
+                document.urlap.progbarvalue.value = document.urlap.csuszka.value + '%';
+            }
+        </script>
+
+    </fieldset>
+
+</form>
+
+<script>
+    function Oops (alertText) {
+    // oops = (alertText) => {  // nyíl függvény nem hívható meg a deklarálása előtt
+        window.alert('Hoppá '+ alertText)}
+</script>
+
+</body>
+</html>

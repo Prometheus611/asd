@@ -1,0 +1,37 @@
+01_1.
+Irasd ki azoknak az elnököknek a nevét és születési idejét, akik 1900 elõtt születtek!
+
+01_2.
+Ird ki azonak az elnököknek a nevét é születési évét, akik 1900ban vagy elõtte születtek!
+
+02.
+Írd ki B betûvel kezdõdõ elnökök nevét és születési helyét!
+
+03.
+Írd ki az 1980 és 1950 között született elnökök nevét, születési helyét és a születési évét!
+
+04.
+Írd ki az a-ra végzõdõ elnökök nevét, születés helyét és idejét!
+
+05.
+Írd ki a K betûvel kezdõd és a-ra végzõdõ elnökök nevét, születés helyét és idejét!
+
+
+06.
+Írd ki azoknak az elnököknek a  nevét, születés helyét és idejét, akinek a nevében szerepel  dupla L!
+
+07.
+Írd ki azoknak az elnököknek a  nevét, születés helyét és idejét, akinek a nevében szerepel y és 1900 elõtt születtek!
+
+08.
+Módosítd az elõzõ lekérdezést úgy hogy születési évszerint növekõbe rendezett adatokat kapjunk!
+
+
+09.
+Módosítd az elõzõ lekérdezést úgy hogy születési évszerint csökkenõ adatokat kapjunk!
+
+10.
+Módosítd az elõzõ lekérdezést úgy hogy születési évszerint csökkenõ azon belül ABC szerint rendezett legyen az adathalmaz! 
+
+11.
+Listázzuk ki, hogy melyik elnõk mettõl meddig volt ebben a pozícióban.

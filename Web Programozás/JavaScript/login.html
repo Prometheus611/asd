@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <style>
+        fieldset{border-radius: 5px;}
+        input{margin-bottom: 1rem;}
+        ::placeholder{color: red;}
+        .material-symbols-outlined{vertical-align: middle; margin-left: -1.75rem; cursor: pointer;}
+    </style>
+</head>
+<body>
+    <form action="#" name="myForm" id="myFormId">
+        <fieldset>
+            <legend><h1>Belépés</h1></legend>
+            Név: <input type="text" name="name" id="nameId"> <br>
+            E-mail cím: <input type="email" name="email" id="emailId" placeholder="Kötelező!" required> <br>
+            Jelszó: <input type="password" name="password" id="passwordId" required> 
+            <span class="material-symbols-outlined" id="eye">visibility_off</span>
+            <!-- <button type="button" name="showButton">mutat</button><span id="psw"></span> --><br>
+            <button type="submit" id="submitButton">Belépés 😎</button>
+        </fieldset>
+    </form>
+    <script>
+        const loginForm = document.getElementById("myFormId")
+        const consteye = document.getElementById("eye")
+        loginForm.email.value = "f@ggot"
+        loginForm.password.value = "szuperjelszo"
+
+        let inVisible = true
+        consteye.onclick = () =>{
+            if (inVisible) {
+                loginForm.password.type="text"
+                consteye.innerText = "visibility"
+                inVisible = false
+            }
+            else{
+                loginForm.password.type="password"
+                consteye.innerText = "visibility_off"
+                inVisible = true
+            }
+        }
+
+        // consteye.onmouseover = () => {
+        //     loginForm.password.type="text"
+        //     consteye.innerText = "visibility"
+        // }
+        // consteye.onmouseout = () => {
+        //     loginForm.password.type="password"
+        //     consteye.innerText = "visibility_off"
+        // }
+
+        // loginForm.showButton.onmouseover = () =>{
+        //     document.getElementById("psw").innerText = loginForm.password.value
+        // }
+        // loginForm.showButton.onmouseout = () =>{
+        //     document.getElementById("psw").innerText = ""
+        // }
+
+        loginForm.onsubmit = () => {
+            alert("Üdv. "+loginForm.name.value+"!")
+        }
+    </script>
+</body>
+</html>

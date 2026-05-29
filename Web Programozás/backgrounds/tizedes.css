@@ -1,0 +1,78 @@
+* {box-sizing: border-box;}
+html {
+    font-family: sans-serif;
+    min-height: 100vh;
+}
+
+body {
+    color: white;
+
+    background: 
+        url("./pics/filmtekercs-background_dark.jpg")
+        fixed;
+    background-size: cover !important;
+}
+
+.box {
+    max-width: 960px;
+    min-width: 280px;
+    margin: 1rem auto;
+    padding: 5px;
+}
+
+#tizedes {
+    background: 
+        url("./pics/filmcsik_bacground.gif")
+        rgba(255,255,255,0.3);
+    background-size: contain;
+}
+#tizedes>div {
+    width: 75%;
+    margin: auto;
+}
+
+#tizedes header {
+    background: url("./pics/tizedes_header.jpg");
+    background-size: cover;
+    aspect-ratio: 700 / 420;
+    position: relative;
+}
+#tizedes h1 {
+    text-shadow: 2px 2px 2px black;
+    background: rgba(0,0,0,0.4);
+    padding: 5px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    margin: 0;
+}
+h2{width: 100%;}
+#foszereplo{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    gap: 10px 5px;
+    flex-basis: 30%;
+}
+#foszereplo figure{
+    background-color: #333;
+    padding: 4px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px silver,-2px 2px 5px silver,2px -2px 5px silver,-2px -2px 5px silver;
+    max-width: fit-content;
+    margin: 4px;
+}
+#foszereplo figure img{
+    width: 200px;
+}
+#reszlet div{
+    margin: auto;
+    width: fit-content;
+}
+#reszlet iframe{
+    aspect-ratio: 16 / 9;
+    max-width: 560px;
+}
+iframe{
+    width: 100%;
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Színkeverések</title>
+    <style>
+        div { padding: .5rem; margin-bottom: 1rem;}
+        h2 { background: black; color: white; padding: .5rem; }
+        input[type=range], #inputR { rotate: 0deg; width: 75%;}
+        input[type=number], input[type=text] {width: 3rem;}
+        #colorBtn { float: right; }
+    </style>
+</head>
+<body>
+    <button type="button" id="colorBtn">Véletlen háttészín</button>
+    <h1>Színkeverések</h1>
+    <div id="RGB">
+        <h2>RGB színkeverés</h2>
+        R: <input type="range" id="inputR" max="255"><input type="number" id="Red_Decimal"><input type="text" id="Red_Hexadec" disabled><br>
+        G: <input type="range" id="inputG" max="255"><br>
+        B: <input type="range" id="inputB" max="255">
+    </div>
+
+    <div id="HSL">
+        <h2>HSL színkeverés</h2>
+        Szín: <input type="range" id="inputH" max="360" value="0"><br>
+        Telítettség: <input type="range" id="inputS" value="100"><br>
+        Világosság: <input type="range" id="inputL" value="50">
+    </div>
+
+    <script>
+        const Red = document.getElementById("inputR")
+            const Red_Hexadec = document.getElementById("Red_Hexadec")
+            const Red_Decimal = document.getElementById("Red_Decimal")
+        const Green = document.getElementById("inputG")
+        const Blue = document.getElementById("inputB")
+
+        colorRGB()
+
+        Red.oninput = () => {
+            // console.log(Red.value)
+            Red_Decimal.value = Red.value
+            Red_Hexadec.value = (Number(Red_Decimal.value).toString(16)).toLocaleUpperCase()
+            colorRGB()
+        }
+        Green.oninput = () => {colorRGB()}
+        Blue.oninput = () => {colorRGB()}
+
+        Red_Decimal.oninput = () => {
+            Red_Hexadec.value = (Number(Red_Decimal.value).toString(16)).toLocaleUpperCase()
+            Red.value = Red_Decimal.value                
+        }
+
+        function colorRGB() {
+            // document.getElementById("RGB").style.backgroundColor = 'rgb('+ Red.value + ',' + '127,127)'
+            console.log(`rgb(${Red.value},${Green.value},${Blue.value})`)
+            document.getElementById("RGB").style.backgroundColor = `rgb(${Red.value},${Green.value},${Blue.value})`
+        }  
+
+        // ---------------- HSL színkeverés -------------------
+
+        const Hue = document.getElementById("inputH")
+        const Saturation = document.getElementById("inputS")
+        const Lightness = document.getElementById("inputL")
+
+        colorHSL()
+
+        Hue.oninput = () => colorHSL()
+        Saturation.oninput = () => colorHSL()
+        Lightness.oninput = () => colorHSL()
+
+        function colorHSL() {
+            console.log (`hsl(${Hue.value}, ${Saturation.value}%, ${Lightness.value}%)`)
+            document.getElementById("HSL").style.background = `hsl(${Hue.value}, ${Saturation.value}%, ${Lightness.value}%)`
+            document.getElementById("HSL").style.color = Lightness.value < 50 ? "white" : "black"
+        }
+
+    // --------------- véletlen háttérszín ------------------------
+
+    document.body.style.background = randomColor()
+
+    document.getElementById("colorBtn").onclick = () => document.body.style.background = randomColor()
+
+    function randomColor() {
+        const S = 80
+        const L = 66
+        const colorNumber = 48
+        let color = Math.round(360 * Math.random() + (360 / colorNumber) * (colorNumber * Math.random()))
+        color = (color > 360) ? color-360 : color
+        console.log ( 'Háttérszín: ',`hsl(${color}, 75%, 50%)`)
+        return `hsl(${color}, ${S}%, ${L}%)`
+    }
+    </script>
+</body>
+</html>
